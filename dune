@@ -1,4 +1,4 @@
-(executable
- (name main)
- (libraries yojson)
- (flags (:standard -w -27)))
+(executables
+ (names main)
+ (modules main pde_problem_parser SemanticChecks )
+ (libraries yojson))

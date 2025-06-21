@@ -1,1 +1,1 @@
-main.ml: Array List Printf Sys Yojson
+main.ml: Array List PDEProblem Pde_problem_parser Printexc Printf SemanticChecks Sys Yojson

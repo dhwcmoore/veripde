@@ -1,4 +1,5 @@
-open Yojson.Basic.Util
+open Pde_problem_parser
+open SemanticChecks
 
 let () =
   let filename =
@@ -11,13 +12,34 @@ let () =
 
   Printf.printf "[🔍] Loading file: %s\n%!" filename;
 
-  let json = Yojson.Basic.from_file filename in
+  let json =
+    try Yojson.Basic.from_file filename
+    with e ->
+      Printf.eprintf "[ERROR] Cannot load JSON: %s\n" (Printexc.to_string e);
+      exit 1
+  in
 
-  let problems = to_list json in
-  Printf.printf "[✅] Parsed %d problems\n%!" (List.length problems);
+  Printf.printf "[✅] Loaded JSON.\n%!";
 
-  List.iteri
-    (fun i item ->
-      let id = item |> member "id" |> to_string in
-      Printf.printf "🔹 Problem %d: id = %s\n%!" (i + 1) id)
-    problems
+ let problem =
+  try PDEProblem.of_json json
+  with e ->
+    Printf.eprintf "[ERROR] Failed to parse PDEProblem: %s\n" (Printexc.to_string e);
+    exit 1
+in
+
+let module SC = SemanticChecks in
+
+let results = [
+  ("PDE regions declared", SC.all_pde_regions_declared problem);
+  ("BC regions declared", SC.all_bc_regions_declared problem);
+  ("Operators supported", SC.all_operators_supported problem)
+] in
+
+List.iter (fun (label, ok) ->
+  Printf.printf "[%s] %s\n" (if ok then "✅" else "❌") label
+) results;
+
+
+  Printf.printf "[✅] Successfully parsed PDE problem.\n%!";
+  (* Continue with validation... *)
