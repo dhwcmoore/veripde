@@ -1,0 +1,15 @@
+{
+  "domain": {
+    "dimension": 2,
+    "regions": ["omega"]
+  },
+  "pde": [
+    {
+      "region": "omega",
+      "operator": "laplace"
+    }
+  ],
+  "bc": [
+    ["boundary1", "dirichlet"]
+  ]
+}
