@@ -1,1 +1,0 @@
-(* Contract logic, JSON parser, and validator here *)
