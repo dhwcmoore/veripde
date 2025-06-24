@@ -1,0 +1,18 @@
+# OCaml / Dune build artifacts
+_build/
+*.cm*
+*.o
+*.a
+*.so
+*.exe
+*.cmo
+*.cmi
+*.cmx
+*.annot
+*.merlin*
+*.cache
+*.vscode/
+*.tar.gz
+*.log
+*.tmp
+.DS_Store

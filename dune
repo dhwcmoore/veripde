@@ -1,4 +1,4 @@
-(executables
- (names main)
- (modules main pde_problem_parser SemanticChecks )
- (libraries yojson))
+(executable
+ (name main)
+ (modules main)
+ (libraries yojson parser model))
