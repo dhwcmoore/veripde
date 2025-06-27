@@ -1,0 +1,9 @@
+{
+  "temp_max": 500.0,
+  "disp_max": 0.1,
+  "pressure_max": 100.0,
+  "mass_min": 0.001,
+  "description": "VeriPDE Contract Validation Thresholds",
+  "version": "1.0",
+  "last_updated": "2025-06-27"
+}

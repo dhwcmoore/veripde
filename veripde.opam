@@ -1,0 +1,17 @@
+opam-version: "2.0"
+name: "veripde"
+version: "0.1.0"
+synopsis: "VeriPDE: Verified Partial Differential Equation Solver"
+description: "Formal contract verification for PDE systems"
+maintainer: "VeriPDE Team"
+author: "VeriPDE Team"
+license: "MIT"
+depends: [
+  "ocaml" {>= "4.12"}
+  "dune" {>= "3.0"}
+  "yojson"
+]
+build: [
+  ["dune" "subst"] {dev}
+  ["dune" "build" "-p" name "-j" jobs]
+]

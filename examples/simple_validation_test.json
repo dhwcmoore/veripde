@@ -1,0 +1,24 @@
+[
+  {
+    "model_id": "basic_valid",
+    "domain": "unit_square",
+    "operator": "heat",
+    "parameters": {
+      "mass": 1.0,
+      "temperature": 25.0
+    },
+    "contracts": [],
+    "expected_result": "PASS"
+  },
+  {
+    "model_id": "basic_invalid",
+    "domain": "unit_square",
+    "operator": "heat", 
+    "parameters": {
+      "mass": -0.5,
+      "temperature": 600.0
+    },
+    "contracts": [],
+    "expected_result": "CRITICAL_FAILURE"
+  }
+]

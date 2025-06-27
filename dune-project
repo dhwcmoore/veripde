@@ -1,3 +1,11 @@
-(lang dune 3.8)
-(name veripde)
-(implicit_transitive_deps false)
+(lang dune 3.0)
+
+(package
+ (name veripde)
+ (allow_empty)
+ (depends 
+  ocaml 
+  dune 
+  yojson)
+ (synopsis "VeriPDE: Verified Partial Differential Equation Solver")
+ (description "Formal contract verification for PDE systems"))

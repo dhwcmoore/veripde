@@ -1,18 +1,33 @@
-# OCaml / Dune build artifacts
+# OCaml/Dune build artifacts
 _build/
-*.cm*
+*.install
+*.merlin
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+
+# OCaml specific
+*.cmi
+*.cmo
+*.cmx
 *.o
 *.a
-*.so
-*.exe
-*.cmo
-*.cmi
-*.cmx
-*.annot
-*.merlin*
-*.cache
-*.vscode/
-*.tar.gz
-*.log
-*.tmp
-.DS_Store
+*.cmxa
+*.cma
+
+# Dune cache
+.dune/
+
+# Opam files
+_opam/

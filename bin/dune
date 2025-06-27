@@ -1,0 +1,4 @@
+(executable
+ (public_name veripde-validator)
+ (name validator_main)
+ (libraries yojson validation))
