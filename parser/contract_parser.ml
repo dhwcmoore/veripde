@@ -6,19 +6,20 @@ open Json_utils
 
 (* Parse a clause from JSON *)
 let parse_clause json =
-  let clause_type = json |> member "type" |> to_string in
-  if clause_type = "requires" then
+  if json |> member "requires" <> `Null then
+    let req = json |> member "requires" in
     let c = {
-      rel = json |> member "rel" |> to_string;
-      lhs = json |> member "lhs" |> to_string;
-      rhs = json |> member "rhs" |> to_safe_float;
+      rel = req |> member "rel" |> to_string;
+      lhs = req |> member "lhs" |> to_string;
+      rhs = req |> member "rhs" |> to_safe_float
     } in
     Requires c
-  else if clause_type = "within" then
+  else if json |> member "within" <> `Null then
+    let range = json |> member "within" in
     let r = {
-      var = json |> member "var" |> to_string;
-      min = json |> member "min" |> to_safe_float;
-      max = json |> member "max" |> to_safe_float;
+      var = range |> member "var" |> to_string;
+      min = range |> member "min" |> to_safe_float;
+      max = range |> member "max" |> to_safe_float
     } in
     Within r
   else
@@ -28,36 +29,30 @@ let parse_clause json =
 let parse_contract json = {
   contract_id = json |> member "contract_id" |> to_string;
   clause = json |> member "clause" |> parse_clause;
-  critical = json |> member "critical" |> to_bool;
+  critical = json |> member "critical" |> to_bool
 }
 
 (* Parse a PDE model from JSON *)
-let parse_model json = {
-  id = json |> member "id" |> to_string;
-  domain = json |> member "domain" |> to_string;
-  operator = json |> member "operator" |> to_string;
-  boundary_conditions =
+let parse_model json =
+  let boundary_conditions =
     json |> member "boundary_conditions"
-         |> to_list
-         |> List.map (fun pair ->
-              match pair with
-              | `List [ `String k; `String v ] -> (k, v)
-              | _ -> failwith "Invalid boundary condition format"
-            );
-  parameters =
-    json |> member "parameters"
-         |> to_list
-         |> List.map (fun pair ->
-              match pair with
-              | `List [ `String name; (`Int _ | `Float _) as num ] ->
-                  (name, to_safe_float num)
-              | _ -> failwith "Invalid parameter format"
-            );
-  contracts =
-    json |> member "contracts"
-         |> to_list
-         |> List.map parse_contract;
-}
+         |> to_assoc
+         |> List.map (fun (k, v) -> (k, to_string v))
+  in
+  {
+    id = json |> member "id" |> to_string;
+    domain = json |> member "domain" |> to_string;
+    operator = json |> member "operator" |> to_string;
+    boundary_conditions = boundary_conditions;
+    parameters =
+      json |> member "parameters"
+           |> to_assoc
+           |> List.map (fun (name, value) -> (name, to_safe_float value));
+    contracts =
+      json |> member "contracts"
+           |> to_list
+           |> List.map parse_contract
+  }
 
 (* Parse a list of models *)
 let parse_models json =

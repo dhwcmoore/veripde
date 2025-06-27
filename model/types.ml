@@ -1,6 +1,4 @@
 (* model/types.ml *)
-
-(* Core types for PDE model and symbolic contracts *)
 module Types = struct
   type comparison = {
     rel : string;
