@@ -1,7 +1,7 @@
-type domain = {
-  dimension : int;
-  regions : string list;
-}
+open Types
+type domain = { name : string; dimension : int };;
+
+
 
 type pde = {
   region : string;
@@ -10,7 +10,12 @@ type pde = {
 
 type bc_type = Dirichlet | Neumann
 
-type boundary_condition = string * bc_type
+llet cmp : Types.comparison = {
+
+  rel = rel_op;
+  lhs = lhs_expr;
+  rhs = rhs_expr;
+}
 
 type problem = {
   domain : domain;

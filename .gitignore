@@ -1,5 +1,18 @@
-# Ignore build artifacts
+# OCaml / Dune build artifacts
 _build/
-*.exe
-*.cmx
+*.cm*
 *.o
+*.a
+*.so
+*.exe
+*.cmo
+*.cmi
+*.cmx
+*.annot
+*.merlin*
+*.cache
+*.vscode/
+*.tar.gz
+*.log
+*.tmp
+.DS_Store

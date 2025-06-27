@@ -1,0 +1,31 @@
+[
+  {
+    "id": "laplace_problem",
+    "domain": "unit_disk",
+    "operator": "laplace",
+    "boundary_conditions": {
+      "r=1": "Dirichlet(0)"
+    },
+    "parameters": {
+      "mass": 5.0,
+      "temperature": 100,
+      "time": 15
+    },
+    "contracts": [
+      {
+        "contract_id": "check_mass",
+        "clause": {
+          "requires": { "rel": ">", "lhs": "mass", "rhs": 0 }
+        },
+        "critical": true
+      },
+      {
+        "contract_id": "temperature_safe",
+        "clause": {
+          "within": { "var": "temperature", "min": 0, "max": 500 }
+        },
+        "critical": false
+      }
+    ]
+  }
+]

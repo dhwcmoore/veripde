@@ -1,0 +1,4 @@
+(library
+ (name parser)
+ (modules contract_parser json_utils)
+ (libraries yojson model))
