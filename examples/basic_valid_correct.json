@@ -1,0 +1,13 @@
+[
+  {
+    "model_id": "basic_valid_single",
+    "domain": "unit_square",
+    "operator": "heat",
+    "parameters": {
+      "mass": 1.0,
+      "temperature": 25.0
+    },
+    "contracts": [],
+    "expected_result": "PASS"
+  }
+]
