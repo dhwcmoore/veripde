@@ -1,0 +1,5 @@
+(library
+ (public_name veripde.parsers)
+ (name parsers)
+ (modules contract_parser)
+ (libraries constraint_types yojson))

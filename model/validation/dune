@@ -1,3 +1,4 @@
 (library
- (name validation)
+ (name model_validation)
  (libraries yojson))
+

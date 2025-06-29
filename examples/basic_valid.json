@@ -1,0 +1,21 @@
+{
+  "model_name": "basic_valid",
+  "model_type": "heat",
+  "domain": {"type": "unit_square"},
+  "parameters": {
+    "mass": 1.000,
+    "temperature": 25.000
+  },
+  "constraints": [
+    {
+      "type": "mass_validation",
+      "threshold": 0.001
+    },
+    {
+      "type": "temperature_range", 
+      "min_value": 0.0,
+      "max_value": 500.0
+    }
+  ],
+  "expected_result": "PASS"
+}

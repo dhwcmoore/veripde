@@ -1,0 +1,4 @@
+(executable
+ (public_name veripde)
+ (name main)
+ (libraries veripde))
