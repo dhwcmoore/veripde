@@ -284,8 +284,7 @@ VeriPDE is released under the MIT License. See [LICENSE](LICENSE) for details.
 
 - **Issues**: [GitHub Issues](https://github.com/veripde/veripde/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/veripde/veripde/discussions)  
-- **Email**: veripde@example.com
+- **Email**: dhwcmoore@gmail.com
 
----
 
-**VeriPDE: Where Mathematics Meets Engineering Certainty** 🔬⚡
+**VeriPDE: Where Engineering Meets Mathematical Certainty** 🔬⚡
