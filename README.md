@@ -4,7 +4,29 @@
 [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://veripde.github.io/docs)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+## What this does
+
+veripde-validator validates parameterized models against domain constraints.
+
+It provides:
+
+- CLI validation
+- structured JSON input
+- deterministic exit codes
+- CI-ready health checks
+
+This is the enforcement layer for dynamic system validity.
+
 **VeriPDE** provides **formal mathematical verification** for PDE constraint validation, ensuring that your partial differential equation models are mathematically sound and operationally reliable.
+
+### Example output
+
+```
+Model: reactor_01
+Temperature: WARNING (exceeds threshold)
+Pressure: CRITICAL (below minimum)
+Result: CRITICAL
+```
 
 ## 🎯 **What VeriPDE Does**
 
@@ -259,6 +281,11 @@ cd veripde
 opam install --deps-only .
 dune build
 dune runtest
+```
+
+### Developer quick check (CI health)
+```bash
+./scripts/ci_health_check.sh
 ```
 
 ### Adding New Constraint Types
