@@ -1,3 +1,4 @@
 (executable
  (name test_runner)
- (libraries yojson parsers constraint_types validation))
+ (modules test_runner test_validator test_contracts)
+ (libraries yojson parsers constraint_types validation model_validation ounit2))
